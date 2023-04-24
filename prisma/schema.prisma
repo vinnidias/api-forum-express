@@ -20,12 +20,14 @@ model User {
 }
 
 model Discussion {
-  id       String    @id @default(uuid())
-  title    String
-  content  String
-  authorId String
-  comment  Comment[] @relation("DiscussionComment")
-  author   User      @relation("WrittenDiscussionCreated", fields: [authorId], references: [id])
+  id         String    @id @default(uuid())
+  title      String
+  content    String
+  authorId   String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  comment    Comment[] @relation("DiscussionComment")
+  author     User      @relation("WrittenDiscussionCreated", fields: [authorId], references: [id])
 
   @@map("discussions")
 }
@@ -35,6 +37,8 @@ model Comment {
   content      String
   discussionId String
   authorId     String
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
   author       User       @relation("CommentCreated", fields: [authorId], references: [id])
   discussion   Discussion @relation("DiscussionComment", fields: [discussionId], references: [id])
 
