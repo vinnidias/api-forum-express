@@ -1,10 +1,14 @@
 import { Router } from "express";
-import { CreateDiscussionController } from "../modules/discussions/useCases/CreateDiscussionController";
+import { CreateDiscussionController } from "../modules/discussions/useCases/createDiscussion/CreateDiscussionController";
+import { GetDiscussionController } from "../modules/discussions/useCases/getDiscussion/GetDiscussionController";
 
-const createDiscussionControler = new CreateDiscussionController();
+const createDiscussionController = new CreateDiscussionController();
+const getDiscussionController = new GetDiscussionController()
+
 
 const discussionRoutes = Router();
 
-discussionRoutes.post("/", createDiscussionControler.handle);
+discussionRoutes.post("/", createDiscussionController.handle);
+discussionRoutes.get("/", getDiscussionController.handle)
 
 export { discussionRoutes };
