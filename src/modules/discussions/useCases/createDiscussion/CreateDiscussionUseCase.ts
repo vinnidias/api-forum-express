@@ -1,7 +1,7 @@
 import { Discussion } from "@prisma/client";
-import { prisma } from "../../../prisma/client";
-import { CreateDiscussionDTO } from "../dtos/CreateDiscussionDTO";
-import { AppError } from "../../../errors/AppError";
+import { prisma } from "../../../../prisma/client";
+import { CreateDiscussionDTO } from "../../dtos/CreateDiscussionDTO";
+import { AppError } from "../../../../errors/AppError";
 
 export class CreateDiscussionUseCase {
   async execute({
